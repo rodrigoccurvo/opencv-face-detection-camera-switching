@@ -29,16 +29,15 @@ def main():
     while not window_closed(WINDOW_TITLE) and key_pressed != ESC:
         has_frame, cam_img = cam.read()
 
-        if not has_frame:
-            continue
+        if has_frame:
+            result = detector.detectMultiScale(cam_img)
 
-        result = detector.detectMultiScale(cam_img)
+            for dims in result:
+                x, y, w, h = dims
+                cv2.rectangle(cam_img, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
-        for dims in result:
-            x, y, w, h = dims
-            cv2.rectangle(cam_img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            cv2.imshow(WINDOW_TITLE, cam_img)
 
-        cv2.imshow(WINDOW_TITLE, cam_img)
         key_pressed = cv2.waitKey(1)
 
     cv2.destroyAllWindows()

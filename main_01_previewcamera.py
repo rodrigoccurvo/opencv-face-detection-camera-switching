@@ -33,10 +33,9 @@ def main():
     while not window_closed(WINDOW_TITLE) and key_pressed != ESC:
         has_frame, cam_img = cam.read()
 
-        if not has_frame:
-            continue
+        if has_frame:
+            cv2.imshow(WINDOW_TITLE, cam_img)
 
-        cv2.imshow(WINDOW_TITLE, cam_img)
         key_pressed = cv2.waitKey(1)
 
     cv2.destroyAllWindows()
