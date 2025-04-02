@@ -1,11 +1,13 @@
 import cv2
+
 from facedetection.camera import Camera
 
 
 def window_closed(window_title):
     try:
         window_closed = not cv2.getWindowProperty(
-            window_title, cv2.WND_PROP_VISIBLE)
+            window_title, cv2.WND_PROP_VISIBLE
+        )
     except cv2.error:
         window_closed = False
 
@@ -19,7 +21,8 @@ ESC = 27
 def main():
     cam = Camera(device="/dev/video2", resolution=(640, 480))
     detector = cv2.CascadeClassifier(
-        'facedetection/haarcascade_frontalface_default.xml')
+        "facedetection/haarcascade_frontalface_default.xml"
+    )
 
     key_pressed = 0
 

@@ -1,5 +1,6 @@
-from .cameraswitcher import CameraSwitcher
 import time
+
+from .cameraswitcher import CameraSwitcher
 
 
 class FadeCameraSwitcher(CameraSwitcher):

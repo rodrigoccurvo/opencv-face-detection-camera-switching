@@ -1,7 +1,9 @@
-from .fadecameraswitcher import FadeCameraSwitcher
-from .facedetection import FaceDetector
 import time
+
 import numpy as np
+
+from .facedetection import FaceDetector
+from .fadecameraswitcher import FadeCameraSwitcher
 
 
 class AutoCameraSwitcher(FadeCameraSwitcher):

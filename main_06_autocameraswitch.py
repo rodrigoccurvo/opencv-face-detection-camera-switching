@@ -6,7 +6,8 @@ from facedetection.multicameracached import MultiCameraCached
 def window_closed(window_title):
     try:
         window_closed = not cv2.getWindowProperty(
-            window_title, cv2.WND_PROP_VISIBLE)
+            window_title, cv2.WND_PROP_VISIBLE
+        )
     except cv2.error:
         window_closed = False
 
@@ -20,8 +21,7 @@ NUM_KEYS = [ord(str(i)) for i in range(10)]
 
 def main():
     multicam = MultiCameraCached(
-        devices=["/dev/video2", "/dev/video0"],
-        resolution=(640, 480)
+        devices=["/dev/video2", "/dev/video0"], resolution=(640, 480)
     )
     camswitcher = AutoCameraSwitcher(multicam)
 

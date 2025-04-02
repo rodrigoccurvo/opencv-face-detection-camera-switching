@@ -1,4 +1,4 @@
-from facedetection.multicamera import MultiCamera
+from .multicamera import MultiCamera
 
 
 class CameraSwitcher:

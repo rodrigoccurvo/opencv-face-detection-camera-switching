@@ -4,7 +4,8 @@ import cv2
 def window_closed(window_title):
     try:
         window_closed = not cv2.getWindowProperty(
-            window_title, cv2.WND_PROP_VISIBLE)
+            window_title, cv2.WND_PROP_VISIBLE
+        )
     except cv2.error:
         window_closed = False
 

@@ -1,13 +1,15 @@
-import cv2
-from facedetection.camera import Camera
-
 import timeit
+
+import cv2
+
+from facedetection.camera import Camera
 
 
 class FaceDetector:
     def __init__(self):
         self.frontal = cv2.CascadeClassifier(
-            'facedetection/haarcascade_frontalface_default.xml')
+            "facedetection/haarcascade_frontalface_default.xml"
+        )
 
     def _detect(self, img):
         result = self.frontal.detectMultiScale3(
@@ -22,13 +24,17 @@ class FaceDetectorReduced:
         self.resize_factor = resize_factor
 
         self.frontal = cv2.CascadeClassifier(
-            'facedetection/haarcascade_frontalface_default.xml')
+            "facedetection/haarcascade_frontalface_default.xml"
+        )
 
     def _detect(self, img):
         # Reduce image resolution
         reduced = cv2.resize(
-            img, None, fx=self.resize_factor, fy=self.resize_factor,
-            interpolation=cv2.INTER_NEAREST
+            img,
+            None,
+            fx=self.resize_factor,
+            fy=self.resize_factor,
+            interpolation=cv2.INTER_NEAREST,
         )
 
         result = self.frontal.detectMultiScale3(
@@ -41,7 +47,8 @@ class FaceDetectorReduced:
 class FaceDetectorGray:
     def __init__(self):
         self.frontal = cv2.CascadeClassifier(
-            'facedetection/haarcascade_frontalface_default.xml')
+            "facedetection/haarcascade_frontalface_default.xml"
+        )
 
     def _detect(self, img):
         # Convert to grayscale
@@ -59,13 +66,17 @@ class FaceDetectorReducedGray:
         self.resize_factor = resize_factor
 
         self.frontal = cv2.CascadeClassifier(
-            'facedetection/haarcascade_frontalface_default.xml')
+            "facedetection/haarcascade_frontalface_default.xml"
+        )
 
     def _detect(self, img):
         # Reduce image resolution
         reduced = cv2.resize(
-            img, None, fx=self.resize_factor, fy=self.resize_factor,
-            interpolation=cv2.INTER_NEAREST
+            img,
+            None,
+            fx=self.resize_factor,
+            fy=self.resize_factor,
+            interpolation=cv2.INTER_NEAREST,
         )
         # Convert to grayscale
         gray_img = cv2.cvtColor(reduced, cv2.COLOR_BGR2GRAY)

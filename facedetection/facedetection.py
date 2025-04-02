@@ -10,7 +10,8 @@ class FaceDetector:
         self.resize_factor = resize_factor
 
         self.frontal = cv2.CascadeClassifier(
-            'facedetection/haarcascade_frontalface_default.xml')
+            "facedetection/haarcascade_frontalface_default.xml"
+        )
 
     def _draw_rects(self, img, rects, color):
         for dims in rects:

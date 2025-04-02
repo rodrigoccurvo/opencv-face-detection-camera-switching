@@ -1,5 +1,6 @@
-import cv2
 import time
+
+import cv2
 
 from facedetection.autocameraswitcher import AutoCameraSwitcher
 from facedetection.facedetection import FaceDetector
@@ -9,7 +10,8 @@ from facedetection.multicameracached import MultiCameraCached
 def window_closed(window_title):
     try:
         window_closed = not cv2.getWindowProperty(
-            window_title, cv2.WND_PROP_VISIBLE)
+            window_title, cv2.WND_PROP_VISIBLE
+        )
     except cv2.error:
         window_closed = False
 
