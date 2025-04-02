@@ -98,8 +98,8 @@ DETECTOR_CLASSES = [
 
 def main():
     cam = Camera(device="/dev/video2", resolution=(1080, 720))
-
     has_frame, cam_img = cam.read()
+    cam.release()
 
     results = []
 
@@ -117,8 +117,6 @@ def main():
     print("Results:")
     for result, cls in results:
         print(f"{result} seconds - {cls}")
-
-    cam.release()
 
 
 if __name__ == "__main__":
