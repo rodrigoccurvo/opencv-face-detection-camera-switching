@@ -3,7 +3,6 @@ import time
 import cv2
 
 from facedetection.autocameraswitcher import AutoCameraSwitcher
-from facedetection.facedetection import FaceDetector
 from facedetection.multicameracached import MultiCameraCached
 
 
@@ -22,31 +21,30 @@ WINDOW_TITLE = "Preview"
 ESC = 27
 NUM_KEYS = [ord(str(i)) for i in range(10)]
 
-FRAME_RATE = 30
+FRAME_RATE = 120
 FRAME_DELAY = 1.0 / FRAME_RATE
 
 
 def main():
     multicam = MultiCameraCached(
-        devices=["/dev/video2", "/dev/video0"],
-        resolution=(640, 480)
+        devices=["/dev/video2", "/dev/video0"], resolution=(640, 480)
     )
     camswitcher = AutoCameraSwitcher(multicam)
-    detector = FaceDetector()
 
     last_time = 0
     key_pressed = 0
 
     while not window_closed(WINDOW_TITLE) and key_pressed != ESC:
         if time.time() - last_time >= FRAME_DELAY:
-            last_time = time.time()
+            new_last_time = time.time()
             multicam.clear_cache()
             has_frame, cam_img = camswitcher.read()
 
             if not has_frame:
                 continue
 
-            detector.find_faces(cam_img)
+            # the point in which we update the time affects image sync/lag
+            last_time = new_last_time
 
             cv2.imshow(WINDOW_TITLE, cam_img)
         else:
