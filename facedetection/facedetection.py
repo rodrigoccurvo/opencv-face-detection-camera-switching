@@ -23,14 +23,15 @@ class FaceDetector:
     def _detect(self, img):
         # Reduce image resolution
         reduced = cv2.resize(
-                img, None, fx=self.resize_factor, fy=self.resize_factor,
-                interpolation=cv2.INTER_NEAREST
-            )
-        # Convert to grayscale
-        gray_img = cv2.cvtColor(reduced, cv2.COLOR_BGR2GRAY)
+            img,
+            None,
+            fx=self.resize_factor,
+            fy=self.resize_factor,
+            interpolation=cv2.INTER_NEAREST,
+        )
 
         result = self.frontal.detectMultiScale3(
-            gray_img, scaleFactor=1.1, minNeighbors=3, outputRejectLevels=True
+            reduced, scaleFactor=1.1, minNeighbors=3, outputRejectLevels=True
         )
 
         return result
