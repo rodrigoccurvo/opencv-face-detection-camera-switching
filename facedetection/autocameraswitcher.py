@@ -16,18 +16,20 @@ class AutoCameraSwitcher(FadeCameraSwitcher):
         self.detector = FaceDetector()
 
     def read(self):
-        if (not self.is_fading()
-                and time.time() - self.last_check >= self.check_delay):
+        if (
+            not self.is_changing()
+            and time.time() - self.last_check >= self.check_delay
+        ):
             self.last_check = time.time()
             self._select_facing_cam()
 
         return super().read()
 
     def _select_facing_cam(self):
-        size = len(self.multicam)
-        detections = np.zeros(size)
+        n_cams = len(self.multicam)
+        detections = np.zeros(n_cams)
 
-        for index in range(size):
+        for index in range(n_cams):
             has_frame, img = self.multicam.read(index)
             if not has_frame:
                 continue
