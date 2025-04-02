@@ -39,11 +39,13 @@ class FadeCameraSwitcher(CameraSwitcher):
         if not prev_has_frame:
             return curr_has_frame, curr_img
 
-        blend = curr_img * self.current_opacity
-        blend += prev_img * (1 - self.current_opacity)
+        return True, self._blend(prev_img, curr_img)
 
-        self.current_opacity = (
-            time.time() - self.select_time) / self.fade_delay
-        self.current_opacity = min(self.current_opacity, 1.0)
+    def _blend(self, img_from, img_to):
+        elapsed_time = time.time() - self.select_time
+        self.current_opacity = min(elapsed_time / self.fade_delay, 1.0)
 
-        return True, blend.astype(curr_img.dtype)
+        blend = img_to * self.current_opacity
+        blend += img_from * (1 - self.current_opacity)
+
+        return blend.astype(img_to.dtype)

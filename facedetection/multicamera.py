@@ -7,8 +7,7 @@ class MultiCamera:
         self.resolution = resolution
 
         self.cams = [
-            Camera(device, self.resolution)
-            for device in self.devices
+            Camera(device, self.resolution) for device in self.devices
         ]
 
     def __len__(self):

@@ -9,10 +9,7 @@ class CameraSwitcher:
         self.current = 0
 
     def select(self, index):
-        if index == self.current:
-            return False
-
-        if index >= len(self.multicam):
+        if index == self.current or index >= len(self.multicam):
             return False
 
         self.previous = self.current
