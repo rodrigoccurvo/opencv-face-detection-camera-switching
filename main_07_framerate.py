@@ -48,7 +48,6 @@ def main():
 
             cv2.imshow(WINDOW_TITLE, cam_img)
         else:
-            # Flush buffer
             multicam.flush()
 
         key_pressed = cv2.waitKey(1)
