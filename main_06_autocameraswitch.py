@@ -24,18 +24,21 @@ def main():
     multicam = MultiCameraCached(
         devices=["/dev/video2", "/dev/video0"], resolution=(640, 480)
     )
+
     camswitcher = AutoCameraSwitcher(multicam)
 
     key_pressed = 0
 
     while not window_closed(WINDOW_TITLE) and key_pressed != ESC:
         multicam.clear_cache()
+
         has_frame, cam_img = camswitcher.read()
 
         if not has_frame:
             continue
 
         cv2.imshow(WINDOW_TITLE, cam_img)
+
         key_pressed = cv2.waitKey(1)
 
         if key_pressed in NUM_KEYS:

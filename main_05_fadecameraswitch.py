@@ -1,6 +1,7 @@
 import cv2
-from facedetection.fadecameraswitcher import FadeCameraSwitcher
+
 from facedetection.facedetection import FaceDetector
+from facedetection.fadecameraswitcher import FadeCameraSwitcher
 from facedetection.multicamera import MultiCamera
 
 
