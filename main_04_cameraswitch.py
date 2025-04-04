@@ -18,7 +18,7 @@ def window_closed(window_title):
 
 WINDOW_TITLE = "Preview"
 ESC = 27
-NUM_KEYS = {ord(str(i)) for i in range(10)}
+NUM_KEYS = {ord(str(i)) for i in range(1, 10)}
 
 
 def main():

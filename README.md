@@ -1,14 +1,7 @@
-# opencv-face-detection
+# opencv-face-detection-camera-switching
 
-Uses OpenCV with Python to open webcam and perform face detection in real time, including camera switching.
+Face detection with OpenCV and Python to select whichever camera the user is facing.
 
+> Note: this project is optimized for learning purposes, not for real-life usage.
 
-> **Note**: this project is optimized for learning purposes, not for real-life usage.
-
-
-## Links
-
-* Code inspired by: https://arcoresearchgroup.wordpress.com/2020/06/02/virtual-camera-for-opencv-using-v4l2loopback/
-
-* TODO:
-    * [ ] check optimizations in https://pyimagesearch.com/2017/02/06/faster-video-file-fps-with-cv2-videocapture-and-opencv/
+Read more about the project: **[Using OpenCV to auto-switch to the camera I'm facing]()**.
