@@ -30,9 +30,9 @@ def main():
         has_frame, cam_img = cam.read()
 
         if has_frame:
-            result = detector.detectMultiScale(cam_img)
+            results = detector.detectMultiScale(cam_img)
 
-            for dims in result:
+            for dims in results:
                 x, y, w, h = dims
                 cv2.rectangle(cam_img, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
